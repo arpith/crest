@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
   validates :text, presence: true
-  validates :from, presence: true
-  validates :to, presence: true
+  validates :sender, presence: true
+  validates :receiver, presence: true
 end
