@@ -25,7 +25,13 @@ The response looks like:
 ```json
 {
 	"ok": true,
-	"message_id": "message id"
+	"message": {
+		"id": "message id",
+		"from": "sender_username",
+		"to": "receiver_username",
+		"text": "the text of the message",
+		"created": "time in UTC"
+	}
 }
 ```
 
@@ -50,16 +56,18 @@ The response looks like:
 	"between": ["username1", "username2"],
 	"messages": [
 		{
+			"id": "an id",
 			"from": "username1", 
 			"to": "username2", 
-			"message": "hi username2!",
-			"timestamp": "time in UTC"
+			"text": "hi username2!",
+			"created": "time in UTC"
 		},
 		{
+			"id": "another id",
 			"from": "username2",
 			"to": "username1",
-			"message": "hi username1!!",
-			"timestamp": "time in UTC"
+			"text": "hi username1!!",
+			"created": "time in UTC"
 		}
 	]
 }
