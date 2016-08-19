@@ -5,7 +5,10 @@ class MessagesController < ApplicationController
 	end
  
  def create
-    @message = Message.new(params[:message])
+    @message = Message.new()
+    @message.from = params[:from]
+    @message.to = params[:to]
+    @message.text = params[:text]
     @message.save
     render json: @message
   end
