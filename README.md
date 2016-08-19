@@ -16,7 +16,7 @@ Create a `POST` request to `/messages` with the following parameters:
 {
 	"from": "sender_username",
 	"to": "receiver_username",
-	"message": "a text message"
+	"text": "a text message"
 }
 ```
 
@@ -46,7 +46,7 @@ Or, if there is some error, it will look like:
 
 
 ## Viewing your conversations
-Create a `GET` request to `/messages?users=username1,username2` to view the conversation between two users. Note that the order does not matter!
+Create a `GET` request to `/messages?user1=username1&user2=username2` to view the conversation between two users. Note that the order does not matter!
 
 The response looks like:
 
