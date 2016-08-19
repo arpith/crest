@@ -2,14 +2,17 @@
 RESTful Chat API
 
 # Usage
-There are two endpoints, `/message` which is used to message a user, and `/chats` which is used to read a list of messages between two users. Both endpoints return JSON. The response will include a top-level boolean property `ok`, indicating success or failure. If `ok` is `false`, there will be an `error` property that contains a brief message.
+Currently there is a single endpoint, `/messages`, that can be used to create a message (with a `POST` request) as well as to obtain a list of messages between users (with a `GET` request). The endpoint returns JSON.
+
+The response will include a top-level boolean property `ok`, indicating success or failure. If `ok` is `false`, there will be an `error` property that contains a brief message.
 
 ## Messaging a user
-Create a `POST` request to `/message/:username` with the following parameters:
+Create a `POST` request to `/messages` with the following parameters:
 
 ```json
 {
 	"from": "sender_username",
+	"to": "receiver_username",
 	"message": "a text message"
 }
 ```
@@ -34,7 +37,7 @@ Or, if there is some error, it will look like:
 
 
 ## Viewing your conversations
-Create a `GET` request to `/chats?user1=username_of_one_user&user2=username_of_other_user` to view the conversation between two users. Note that the order does not matter!
+Create a `GET` request to `/messages?users=username1,username2` to view the conversation between two users. Note that the order does not matter!
 
 The response looks like:
 
