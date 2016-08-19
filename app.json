@@ -1,0 +1,6 @@
+{
+  "name": "Crest",
+  "description": "A chat API in Rails",
+  "repository": "https://github.com/arpith/crest",
+  "keywords": ["rails", "api"]
+}

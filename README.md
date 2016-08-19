@@ -1,6 +1,9 @@
 # Crest
 RESTful Chat API
 
+# Deploy
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 # Usage
 Currently there is a single endpoint, `/messages`, that can be used to create a message (with a `POST` request) as well as to obtain a list of messages between users (with a `GET` request). The endpoint returns JSON.
 
