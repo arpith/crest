@@ -5,7 +5,7 @@ class ChatFlowTest < ActionDispatch::IntegrationTest
   test "can send message" do
     message = {"sender": "u1", "receiver": "u2", "text": "hi"}
     post '/messages', params: message, as: :json
-    json = JSON.parse(response.body)
+    json = JSON.parse(response.body)['message']
     assert_response :success
     assert_equal message[:sender], json['sender']
     assert_equal message[:receiver], json['receiver']
