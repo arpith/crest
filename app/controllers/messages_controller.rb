@@ -12,6 +12,6 @@ class MessagesController < ApplicationController
     @message.receiver = params[:receiver]
     @message.text = params[:text]
     @message.save
-    render json: @message
+    render status: 201, json: @message
   end
 end
