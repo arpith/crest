@@ -4,7 +4,7 @@ require 'json'
 class ChatFlowTest < ActionDispatch::IntegrationTest
   test "can send message" do
     message = {"sender": "u1", "receiver": "u2", "text": "hi"}
-    post '/messages', message.to_json, "CONTENT_TYPE" => 'application/json'
+    post '/messages', params: message, as: :json
     json = JSON.parse(response.body)
     assert_response :success
     assert_equal message[:sender], json['sender']
@@ -14,9 +14,9 @@ class ChatFlowTest < ActionDispatch::IntegrationTest
 
   test "can list message" do
     message = {"sender": "u1", "receiver": "u2", "text": "hi"}
-    post '/messages', message.to_json, "CONTENT_TYPE" => 'application/json'
+    post '/messages', params: message, as: :json
     id = JSON.parse(response.body)['id']
-    get '/messages?user1=u1&user2=u2'
+    get '/messages', params: {user1: 'u1', user2: 'u2'}
     assert_response :success
     json = JSON.parse(response.body)
     i = json.index { |m| m['id'] == id }
