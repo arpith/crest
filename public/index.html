@@ -1,0 +1,66 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel='stylesheet' type='text/css' href='/style.css'>
+<title>Crest</title>
+<h1>Crest</h1>
+<h2>A RESTful Chat API</h2>
+<h2>Usage</h2>
+
+<p>Currently there is a single endpoint, <code>/messages</code>, that can be used to create a message (with a <code>POST</code> request) as well as to obtain a list of messages between users (with a <code>GET</code> request). The endpoint returns JSON.</p>
+
+<h3>Messaging a user</h3>
+
+<p>Create a <code>POST</code> request to <code>/messages</code> with the following parameters:</p>
+<pre>
+<code>
+{
+    "from": "sender_username",
+    "to": "receiver_username",
+    "text": "a text message"
+}
+</code>
+</pre>
+<p>The response looks like:</p>
+<pre>
+<code>
+{
+    "message": {
+        "id": "message id",
+        "from": "sender_username",
+        "to": "receiver_username",
+        "text": "the text of the message",
+        "created": "time in UTC"
+    }
+}
+</code>
+</pre>
+<h3>Viewing your conversations</h3>
+<p>
+Create a <code>GET</code> request to <code>/messages?user1=username1&user2=username2</code> to view the conversation between two users. Note that the order does not matter!
+</p>
+<p>
+The response looks like:
+</p>
+<pre>
+<code>
+{
+    "messages": [
+        {
+            "id": "an id",
+            "from": "username1", 
+            "to": "username2", 
+            "text": "hi username2!",
+            "created": "time in UTC"
+        },
+        {
+            "id": "another id",
+            "from": "username2",
+            "to": "username1",
+            "text": "hi username1!!",
+            "created": "time in UTC"
+        }
+    ]
+}
+</code>
+</pre>
