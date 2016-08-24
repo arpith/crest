@@ -7,8 +7,6 @@ RESTful Chat API
 # Usage
 Currently there is a single endpoint, `/messages`, that can be used to create a message (with a `POST` request) as well as to obtain a list of messages between users (with a `GET` request). The endpoint returns JSON.
 
-The response will include a top-level boolean property `ok`, indicating success or failure. If `ok` is `false`, there will be an `error` property that contains a brief message.
-
 ## Messaging a user
 Create a `POST` request to `/messages` with the following parameters:
 
@@ -24,7 +22,6 @@ The response looks like:
 
 ```json
 {
-	"ok": true,
 	"message": {
 		"id": "message id",
 		"from": "sender_username",
@@ -35,16 +32,6 @@ The response looks like:
 }
 ```
 
-Or, if there is some error, it will look like:
-
-```json
-{
-	"ok": false,
-	"error": "error message"
-}
-```
-
-
 ## Viewing your conversations
 Create a `GET` request to `/messages?user1=username1&user2=username2` to view the conversation between two users. Note that the order does not matter!
 
@@ -52,8 +39,6 @@ The response looks like:
 
 ```json
 {
-	"ok": true,
-	"between": ["username1", "username2"],
 	"messages": [
 		{
 			"id": "an id",
@@ -70,14 +55,5 @@ The response looks like:
 			"created": "time in UTC"
 		}
 	]
-}
-```
-
-Or, if there was some error, the response will look like:
-
-```json
-{
-	"ok": false,
-	"error": "error message"
 }
 ```
