@@ -15,8 +15,8 @@
 <pre>
 <code>
 {
-    "from": "sender_username",
-    "to": "receiver_username",
+    "sender": "sender_username",
+    "receiver": "receiver_username",
     "text": "a text message"
 }
 </code>
@@ -27,10 +27,11 @@
 {
     "message": {
         "id": "message id",
-        "from": "sender_username",
-        "to": "receiver_username",
+        "sender": "sender_username",
+        "receiver": "receiver_username",
         "text": "the text of the message",
         "created": "time in UTC"
+        "updated": "time in UTC"
     }
 }
 </code>
@@ -48,19 +49,114 @@ The response looks like:
     "messages": [
         {
             "id": "an id",
-            "from": "username1", 
-            "to": "username2", 
+            "sender": "username1", 
+            "receiver": "username2", 
             "text": "hi username2!",
             "created": "time in UTC"
+            "updated": "time in UTC"
         },
         {
             "id": "another id",
-            "from": "username2",
-            "to": "username1",
+            "sender": "username2",
+            "receiver": "username1",
             "text": "hi username1!!",
             "created": "time in UTC"
+            "updated": "time in UTC"
         }
     ]
+}
+</code>
+</pre>
+
+<h2>Objects</h2>
+<h3><code>message</code></h3>
+<p>A json object with:</p>
+<ol>
+	<li><code>id</code> string</li>
+	<li><code>sender</code> username string</li>
+	<li><code>receiver</code> username string</li>
+	<li><code>text</code> the text of the message (string)</li>
+	<li><code>created</code> time in UTC</li>
+	<li><code>updated</code> time in UTC</li>
+</ol>
+
+<p>For example,</p>
+<pre>
+<code>
+{
+	"id": "an id",
+	"sender": "bar",
+	"receiver": "foo",
+	"text": "hi foo!!",
+	"created": "time in UTC"
+	"updated": "time in UTC"
+}
+</code>
+</pre>
+
+<h2>Resources</h2>
+<h3><code>/messages</code></h3>
+<h4><code>GET</code></h4>
+<p><code>GET /messages?user1=foo&user2=bar</code> retrieves a list of messages between <code>foo</code> and <code>bar</code>. Note that this includes messages sent by <code>foo</code> to <code>bar</code> as well as messages sent by <code>bar</code> to <code>foo</code> and that the order does not matter.</p>
+
+<h5>Required Parameters</h5>
+<ol>
+	<li><code>user1</code> a string username</li>
+	<li><code>user2</code> a string username</li>
+</ol>
+
+<h5>Response</h5>
+<p>The json response has a top level attribute <code>messages</code> that is an array of <a href='#message'><code>message</code> objects</a>.
+
+<pre>
+<code>
+{
+	"messages": [
+		{
+			"id": "an id",
+			"sender": "foo", 
+			"receiver": "bar", 
+			"text": "hi bar!",
+			"created": "time in UTC",
+			"updated": "time in UTC"
+		},
+		{
+			"id": "another id",
+			"sender": "bar",
+			"receiver": "foo",
+			"text": "hi foo!!",
+			"created": "time in UTC"
+			"updated": "time in UTC"
+		}
+	]
+}
+</code>
+</pre>
+
+<h4><code>POST</code></h4>
+<p><code>POST /messages?sender=foo&receiver=bar&text=something</code> creates a message from <code>foo</code> to <code>bar</code> with the text <code>something</code>.</p>
+
+<h5>Required Parameters</h5>
+<ol>
+	<li><code>sender</code> a string username</li>
+	<li><code>receiver</code> a string username</li>
+	<li><code>text</code> the text of the message (string)</li>
+</ol>
+
+<h5>Response</h5>
+<p>The json response has a top level attribute <code>message</code> that is a <a href='#message'><code>message</code> object</a>.</p>
+
+<pre>
+<code>
+{
+	"message": {
+		"id": "an id",
+		"sender": "foo", 
+		"receiver": "bar", 
+		"text": "something",
+		"created": "time in UTC",
+		"updated": "time in UTC"
+	}
 }
 </code>
 </pre>

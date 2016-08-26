@@ -90,7 +90,7 @@ For example,
 2. `user2` a string username
 
 #### Response
-The response is a json object with a top level attribute `messages` that is an array of [`message` objects](##message).
+The json response has a top level attribute `messages` that is an array of [`message` objects](##message).
 
 ```json
 {
@@ -124,7 +124,7 @@ The response is a json object with a top level attribute `messages` that is an a
 3. `text` the text of the message (string)
 
 #### Response
-The response is a json object with a top level attribute `message` that is a [`message` object](##message).
+The json response has a top level attribute `message` that is a [`message` object](##message).
 
 ```json
 {
