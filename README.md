@@ -64,6 +64,7 @@ The response looks like:
 # Objects
 ## `message`
 A json object with:
+
 1. `id` string
 2. `sender` username string
 3. `receiver` username string
