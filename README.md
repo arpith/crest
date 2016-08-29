@@ -27,7 +27,8 @@ The response looks like:
 		"sender": "sender_username",
 		"receiver": "receiver_username",
 		"text": "the text of the message",
-		"created": "time in UTC"
+        	"created": "time in UTC",
+	        "updated": "time in UTC"
 	}
 }
 ```
@@ -45,14 +46,16 @@ The response looks like:
 			"sender": "username1", 
 			"receiver": "username2", 
 			"text": "hi username2!",
-			"created": "time in UTC"
+			"created": "time in UTC",
+	        	"updated": "time in UTC"
 		},
 		{
 			"id": "another id",
 			"sender": "username2",
 			"receiver": "username1",
 			"text": "hi username1!!",
-			"created": "time in UTC"
+			"created": "time in UTC",
+	        	"updated": "time in UTC"
 		}
 	]
 }
@@ -75,7 +78,7 @@ For example,
 	"sender": "bar",
 	"receiver": "foo",
 	"text": "hi foo!!",
-	"created": "time in UTC"
+	"created": "time in UTC",
 	"updated": "time in UTC"
 }
 ```
@@ -108,7 +111,7 @@ The json response has a top level attribute `messages` that is an array of [`mes
 			"sender": "bar",
 			"receiver": "foo",
 			"text": "hi foo!!",
-			"created": "time in UTC"
+			"created": "time in UTC",
 			"updated": "time in UTC"
 		}
 	]
